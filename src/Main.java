@@ -40,12 +40,6 @@ public class Main {
 
                         index++;
                     }
-                    else if (!linesForWord.contains("_")){
-                        System.out.println("Reached");
-                        System.out.println("YOU WIN");
-                        bool = false;
-                    }
-
                     else {
                         linesForWord.set(index, String.valueOf(c));
                         index++;
