@@ -32,16 +32,16 @@ public class Main {
             System.out.println("Guess the word " + linesForWord);
             char userguess = sc.next().charAt(0);
             int index = 0;
-            if (!linesForWord.contains("_")){
-                System.out.println("YOU WIN");
-                bool = false;
-            }
-            else if(answer.contains(String.valueOf(userguess))) {
-
+            if(answer.contains(String.valueOf(userguess)) && linesForWord.contains("_")) {
                 for (char c : answer.toCharArray()) {
                     if (c != userguess) {
 
                         index++;
+                    }
+                    else if (!linesForWord.contains("_")){
+                        System.out.println("Reached");
+                        System.out.println("YOU WIN");
+                        bool = false;
                     }
 
                     else {
@@ -51,19 +51,28 @@ public class Main {
                 }
             }
 
-
+//            else if (!linesForWord.contains("_")){
+//                System.out.println("Reached");
+//                System.out.println("YOU WIN");
+//                bool = false;
+//            }
                 else if (wrongGuess < 5){
                 wrongGuess++;
                 System.out.println(hm.getMan(wrongGuess));
 
             }
                 else {
-                    System.out.println("You lose");
                     bool = false;
             }
         }
-        while(bool);
-        System.out.println("Look at him, he's fucking dead man" + linesForWord + "\n" + hm.getMan(wrongGuess));
+        while(linesForWord.contains("_") && bool);
+        if (!bool){
+            System.out.println("You lose"+ linesForWord + "\n" + hm.getMan(wrongGuess));
+        }
+        else{
+            System.out.println("You win, thats amazing!" + linesForWord + "\n" + hm.getMan(wrongGuess));
+
+        }
 
 
 
