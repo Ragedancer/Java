@@ -4,10 +4,15 @@ import java.util.List;
 public class Hangman {
 
     public List<String> getList(String str){
-        System.out.println(str);
         List<String> sl = new ArrayList<>();
         for(char c: str.toCharArray()){
-            sl.add("_");
+            if (c == ' '){
+                sl.add(" ");
+            }
+            else{
+                sl.add("_");
+            }
+
         }
         return sl;
     }

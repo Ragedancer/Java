@@ -34,7 +34,7 @@ public class Main {
             System.out.println("Guess the word " + linesForWord);
             char userguess = sc.next().charAt(0);
             int index = 0;
-            if(answer.contains(String.valueOf(userguess)) && linesForWord.contains("_")) {
+            if(answer.contains(String.valueOf(userguess))) {
                 for (char c : answer.toCharArray()) {
                     if (c != userguess) {
 
@@ -52,12 +52,6 @@ public class Main {
                     }
                 }
             }
-
-//            else if (!linesForWord.contains("_")){
-//                System.out.println("Reached");
-//                System.out.println("YOU WIN");
-//                bool = false;
-//            }
                 else if (wrongGuess < 5){
                 wrongGuess++;
                 System.out.println(hm.getMan(wrongGuess));
