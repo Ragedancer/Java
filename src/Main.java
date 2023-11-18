@@ -57,11 +57,12 @@ public class Main {
         }
         while(linesForWord.contains("_") && bool);
         if (!bool){
-            System.out.println("You lose"+ linesForWord + "\n" + hm.getMan(wrongGuess));
+            System.out.println("You lose, wanna play again?"+ linesForWord + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
+            hm.playAgain();
         }
         else{
-            System.out.println("You win, thats amazing!" + linesForWord + "\n" + hm.getMan(wrongGuess));
-
+            System.out.println("You win, thats amazing! Wanna play again?" + linesForWord + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
+            hm.playAgain();
         }
 
 

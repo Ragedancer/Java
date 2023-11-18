@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Hangman {
 
@@ -17,7 +18,21 @@ public class Hangman {
         return sl;
     }
 
-
+    public void playAgain(){
+        Scanner sc = new Scanner(System.in);
+        char userInput = sc.next().charAt(0);
+        userInput = Character.toLowerCase(userInput);
+        if (userInput == 'y'){
+            Main.main(null);
+        }
+        else if (userInput == 'n'){
+            System.out.println("Thats lame");
+        }
+        else{
+            System.out.println("What was that again?");
+            playAgain();
+        }
+    }
     public String getMan(Integer wrongNumber){
         switch (wrongNumber){
             case 0:
