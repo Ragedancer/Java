@@ -29,7 +29,7 @@ public class Main {
         int wrongGuess = 0;
         Random ran = new Random();
         String answer = stringList.get(ran.nextInt(stringList.size()));
-        List<String> linesForWord = hm.getList(stringList.get(1));
+        List<String> linesForWord = hm.getList(answer);
         do{
             System.out.println("Guess the word " + linesForWord);
             char userguess = sc.next().charAt(0);
