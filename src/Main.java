@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -26,7 +27,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean bool = true;
         int wrongGuess = 0;
-        String answer = stringList.get(1);
+        Random ran = new Random();
+        String answer = stringList.get(ran.nextInt(stringList.size()));
         List<String> linesForWord = hm.getList(stringList.get(1));
         do{
             System.out.println("Guess the word " + linesForWord);
