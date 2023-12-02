@@ -6,33 +6,30 @@ import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    static List<String> stringList = new ArrayList<>();
+    static Words word = new Words();
     static Hangman hm = new Hangman();
     static Scanner sc = new Scanner(System.in);
     static boolean lean;
     static int wrongGuess = 0;
-    static Random ran = new Random();
     public static void main(String[] args) {
-        stringList.add("cat");
-        stringList.add("boat");
-        stringList.add("champagne");
-        stringList.add("the bog hog");
+        word.setStringList();
+        word.setGuessWord();
+        word.setLinesForWord();
         lean = true;
 
-        String answer = stringList.get(ran.nextInt(stringList.size()));
-        List<String> linesForWord = hm.getList(answer);
+
         do{
-            System.out.println("Guess the word " + linesForWord);
+            System.out.println("Guess the word " + word.getLinesForWord());
             char userGuess = sc.next().charAt(0);
             int index = 0;
-            if(answer.contains(String.valueOf(userGuess))) {
-                for (char c : answer.toCharArray()) {
+            if(word.getGuessWord().contains(String.valueOf(userGuess))) {
+                for (char c : word.getGuessWord().toCharArray()) {
                     if (c != userGuess) {
 
                         index++;
                     }
                     else {
-                        linesForWord.set(index, String.valueOf(c));
+                        word.setLetterForGuess(index, String.valueOf(c));
                         index++;
                     }
                 }
@@ -46,13 +43,13 @@ public class Main {
                     lean = false;
             }
         }
-        while(linesForWord.contains("_") && lean);
+        while(word.getLinesForWord().contains("_") && lean);
         if (!lean){
-            System.out.println("You lose, wanna play again?"+ linesForWord + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
+            System.out.println("You lose, wanna play again?"+ word.getLinesForWord() + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
             hm.playAgain();
         }
         else{
-            System.out.println("You win, thats amazing! Wanna play again?" + linesForWord + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
+            System.out.println("You win, thats amazing! Wanna play again?" + word.getLinesForWord() + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
             hm.playAgain();
         }
 

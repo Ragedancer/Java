@@ -27,10 +27,12 @@ public class Hangman {
         }
         else if (userInput == 'n'){
             System.out.println("Thats lame");
+            sc.close();
         }
         else{
             System.out.println("What was that again?");
             playAgain();
+            sc.close();
         }
     }
     public String getMan(Integer wrongNumber){
