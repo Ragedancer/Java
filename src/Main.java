@@ -6,37 +6,28 @@ import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
+    static List<String> stringList = new ArrayList<>();
+    static Hangman hm = new Hangman();
+    static Scanner sc = new Scanner(System.in);
+    static boolean lean;
+    static int wrongGuess = 0;
+    static Random ran = new Random();
     public static void main(String[] args) {
-//        Methods method = new Methods();
-//        //System.out.print(method.getNumber(25));
-//
-//        List<String> stringList = new ArrayList<>();
-//        stringList.add("Sam");
-//        stringList.add("romor");
-//        stringList.add("nascar");
-//        stringList.add("kayak");
-//        for(String str: stringList){
-//            System.out.println(method.getPalindrome(str));
-//        }
-        List<String> stringList = new ArrayList<>();
         stringList.add("cat");
         stringList.add("boat");
         stringList.add("champagne");
         stringList.add("the bog hog");
-        Hangman hm = new Hangman();
-        Scanner sc = new Scanner(System.in);
-        boolean bool = true;
-        int wrongGuess = 0;
-        Random ran = new Random();
+        lean = true;
+
         String answer = stringList.get(ran.nextInt(stringList.size()));
         List<String> linesForWord = hm.getList(answer);
         do{
             System.out.println("Guess the word " + linesForWord);
-            char userguess = sc.next().charAt(0);
+            char userGuess = sc.next().charAt(0);
             int index = 0;
-            if(answer.contains(String.valueOf(userguess))) {
+            if(answer.contains(String.valueOf(userGuess))) {
                 for (char c : answer.toCharArray()) {
-                    if (c != userguess) {
+                    if (c != userGuess) {
 
                         index++;
                     }
@@ -52,11 +43,11 @@ public class Main {
 
             }
                 else {
-                    bool = false;
+                    lean = false;
             }
         }
-        while(linesForWord.contains("_") && bool);
-        if (!bool){
+        while(linesForWord.contains("_") && lean);
+        if (!lean){
             System.out.println("You lose, wanna play again?"+ linesForWord + "\n" + hm.getMan(wrongGuess) + "\n" + "Type y to play again, type n if you don't.");
             hm.playAgain();
         }
