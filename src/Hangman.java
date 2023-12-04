@@ -3,7 +3,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Hangman {
+    public Integer getWrongGuess() {
+        return wrongGuess;
+    }
 
+    public void addWrongGuess() {
+        this.wrongGuess++;
+    }
+
+    private Integer wrongGuess;
     public List<String> getList(String str){
         List<String> sl = new ArrayList<>();
         for(char c: str.toCharArray()){
@@ -23,16 +31,16 @@ public class Hangman {
         char userInput = sc.next().charAt(0);
         userInput = Character.toLowerCase(userInput);
         if (userInput == 'y'){
+            sc.close();
             Main.main(null);
         }
         else if (userInput == 'n'){
-            System.out.println("Thats lame");
             sc.close();
+            System.out.println("Thats lame");
         }
         else{
             System.out.println("What was that again?");
             playAgain();
-            sc.close();
         }
     }
     public String getMan(Integer wrongNumber){

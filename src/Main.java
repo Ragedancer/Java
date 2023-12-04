@@ -25,7 +25,6 @@ public class Main {
             if(word.getGuessWord().contains(String.valueOf(userGuess))) {
                 for (char c : word.getGuessWord().toCharArray()) {
                     if (c != userGuess) {
-
                         index++;
                     }
                     else {
@@ -34,9 +33,9 @@ public class Main {
                     }
                 }
             }
-                else if (wrongGuess < 5){
-                wrongGuess++;
-                System.out.println(hm.getMan(wrongGuess));
+                else if (hm.getWrongGuess() < 5){
+                hm.addWrongGuess();
+                System.out.println(hm.getMan(hm.getWrongGuess()));
 
             }
                 else {
